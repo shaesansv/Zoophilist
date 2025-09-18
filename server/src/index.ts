@@ -31,7 +31,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
 // Health check
-app.get("/api/health", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Forest Pet Shop API is running!" });
 });
 
