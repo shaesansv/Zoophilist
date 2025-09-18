@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-foreground">Owner</h3>
                     <p className="text-forest-text">
-                      {shop?.owner?.name || "Forest Pet Shop Owner"}
+                      {shop?.owner?.name || "Zoophilist Pet Shop"}
                     </p>
                   </div>
                 </div>
@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
                     <p className="text-forest-text">
-                      {shop?.owner?.email || "contact@forestpetshop.com"}
+                      {shop?.owner?.email || "contact@Zoophilistshop.com"}
                     </p>
                   </div>
                 </div>
@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
                     <h3 className="font-semibold text-foreground">Address</h3>
                     <p className="text-forest-text">
                       {shop?.owner?.address ||
-                        "123 Forest Lane, Green Valley, Nature City - 560001"}
+                        "Thiruvottiyur, Chennai, Tamil Nadu, India - 600019"}
                     </p>
                   </div>
                 </div>

@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -87,7 +92,10 @@ export default {
           "0%": { transform: "translateY(-100vh) rotate(0deg)", opacity: "0" },
           "10%": { opacity: "1" },
           "90%": { opacity: "1" },
-          "100%": { transform: "translateY(100vh) rotate(360deg)", opacity: "0" },
+          "100%": {
+            transform: "translateY(100vh) rotate(360deg)",
+            opacity: "0",
+          },
         },
         "snake-slither": {
           "0%, 100%": { transform: "translateX(0) scaleX(1)" },

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ForestAnimations from "./components/ForestAnimations";
 import PrivateRouteAdmin from "./components/PrivateRouteAdmin";
 
@@ -37,37 +38,38 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/order" element={<Order />} />
             <Route path="/contact" element={<Contact />} />
-            
+
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
-            <Route 
-              path="/admin/home" 
+            <Route
+              path="/admin/home"
               element={
                 <PrivateRouteAdmin>
                   <AdminHome />
                 </PrivateRouteAdmin>
-              } 
+              }
             />
-            <Route 
-              path="/admin/products" 
+            <Route
+              path="/admin/products"
               element={
                 <PrivateRouteAdmin>
                   <AdminProducts />
                 </PrivateRouteAdmin>
-              } 
+              }
             />
-            <Route 
-              path="/admin/customers" 
+            <Route
+              path="/admin/customers"
               element={
                 <PrivateRouteAdmin>
                   <AdminCustomers />
                 </PrivateRouteAdmin>
-              } 
+              }
             />
-            
+
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AppProvider>
     </TooltipProvider>
