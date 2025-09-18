@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1"
   },
+  "engines": {"node": "20.x"},
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.2",

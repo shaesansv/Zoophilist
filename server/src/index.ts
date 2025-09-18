@@ -32,7 +32,7 @@ app.use("/api/orders", orderRoutes);
 
 // Health check
 app.get("/", (req, res) => {
-  res.json({ message: "Forest Pet Shop API is running!" });
+  res.send({ message: "Forest Pet Shop API is running!" });
 });
 
 // Error handler
