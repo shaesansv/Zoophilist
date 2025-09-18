@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-xl font-bold text-forest-glow">
-            🐾 Zoophilist Pet Shop
+            🐾 Zoophilist
           </Link>
           <div className="flex items-center space-x-6">
             <Link
