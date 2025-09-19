@@ -6,7 +6,7 @@ const USE_MOCK_API = false; // Set to false when backend is ready
 
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://zoophilist-server.onrender.com",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
