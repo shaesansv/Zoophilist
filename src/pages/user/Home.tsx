@@ -138,13 +138,9 @@ const Home: React.FC = () => {
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-6">
-                  Why Choose Forest Pet Shop?
+                  Why Choose Zoophilist?
                 </h3>
                 <ul className="space-y-4 text-gray-200">
-                  <li className="flex items-center gap-3">
-                    <span className="text-forest-glow text-xl">🌿</span>
-                    <span>Sustainably sourced from the Amazon rainforest</span>
-                  </li>
                   <li className="flex items-center gap-3">
                     <span className="text-forest-glow text-xl">🐾</span>
                     <span>Veterinarian approved and tested products</span>
@@ -175,7 +171,7 @@ const Home: React.FC = () => {
       >
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white animate-fade-in-up">
-            Premium <span className="text-forest-glow">Forest</span> Benefits
+            Premium <span className="text-forest-glow">Zoophilist</span> Benefits
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
