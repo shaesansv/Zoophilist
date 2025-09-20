@@ -1,15 +1,4 @@
 services:
-  # Frontend (Static Site)
-  - type: web
-    name: zoophilist-frontend
-    runtime: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-
   # Backend (Web Service) 
   - type: web
     name: zoophilist-backend
@@ -18,4 +7,12 @@ services:
     buildCommand: npm install
     startCommand: npm start
     rootDir: server
+    env: node
+
+  # Frontend (Static Site)
+  - type: web
+    name: zoophilist-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
     env: node
