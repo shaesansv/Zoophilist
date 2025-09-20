@@ -1,2 +1,5 @@
 # Handles client-side routing for React Router
+# All routes should serve index.html for SPA functionality
+# API calls should not be redirected
+/api/* /api/:splat 200
 /*    /index.html   200
