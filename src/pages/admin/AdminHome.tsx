@@ -7,7 +7,7 @@ import { Shop } from '../../types';
 const AdminHome: React.FC = () => {
   const { shop, refreshShop } = useAppContext();
   const { toast } = useToast();
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(true);
   const [shopData, setShopData] = useState<Shop>({
     description: '',
     youtubeUrl: '',
