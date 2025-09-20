@@ -1,3 +1,2 @@
-# SPA fallback for React Router
-# This tells Render to serve index.html for all routes that don't match static files
+# SPA Redirects for Render
 /*    /index.html   200
