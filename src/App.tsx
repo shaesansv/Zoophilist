@@ -30,7 +30,7 @@ const App = () => (
       <AppProvider>
         <Toaster />
         <Sonner />
-        <HashRouter>
+        <BrowserRouter>
           <Navbar />
           <ForestAnimations />
           <Routes>
@@ -73,7 +73,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-        </HashRouter>
+        </BrowserRouter>
       </AppProvider>
     </TooltipProvider>
   </QueryClientProvider>
