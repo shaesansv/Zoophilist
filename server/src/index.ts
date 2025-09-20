@@ -10,8 +10,6 @@ import shopRoutes from "./routes/shop";
 import categoryRoutes from "./routes/categories";
 import productRoutes from "./routes/products";
 import orderRoutes from "./routes/orders";
-import path from "path";
-import { fileURLToPath } from "url";
 
 const app = express();
 dotenv.config();
@@ -37,10 +35,19 @@ app.get("/", (req, res) => {
   res.send({ message: "Forest Pet Shop API is running!" });
 });
 
-app.use(express.static(path.join(__dirname, "dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+// API status endpoint
+app.get("/api", (req, res) => {
+  res.json({ 
+    message: "Forest Pet Shop API is running!",
+    version: "1.0.0",
+    endpoints: [
+      "/api/auth",
+      "/api/shop", 
+      "/api/categories",
+      "/api/products",
+      "/api/orders"
+    ]
+  });
 });
 
 // Error handler
