@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ForestAnimations from "./components/ForestAnimations";
 import PrivateRouteAdmin from "./components/PrivateRouteAdmin";
+import DebugRouting from "./components/DebugRouting";
 
 // User Pages
 import Home from "./pages/user/Home";
@@ -21,6 +22,7 @@ import AdminProducts from "./pages/admin/AdminProducts";
 import AdminCustomers from "./pages/admin/AdminCustomers";
 
 import NotFound from "./pages/NotFound";
+import TestPage from "./pages/TestPage";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <DebugRouting />
           <Navbar />
           <ForestAnimations />
           <Routes>
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/order" element={<Order />} />
             <Route path="/contact" element={<Contact />} />
+            
+            {/* Test Route */}
+            <Route path="/test" element={<TestPage />} />
 
             {/* Admin Routes */}
             <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
