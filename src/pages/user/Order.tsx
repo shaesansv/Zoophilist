@@ -95,7 +95,8 @@ const Order: React.FC = () => {
         <div className="text-center animate-fade-in-up">
           <div className="text-8xl mb-6 animate-bounce">🎉</div>
           <h1 className="text-4xl font-bold text-forest-glow mb-4">Order Placed!</h1>
-          <p className="text-xl text-forest-text mb-6">Thank you for choosing Forest Pet Shop!</p>
+          <h1 className="text-4xl font-bold text-forest-glow mb-4">We will Contact You Soon!😊💕</h1>
+          <p className="text-xl text-forest-text mb-6">Thank you for choosing Zoophilist!</p>
           <div className="flex justify-center space-x-4 text-4xl animate-float">
             <span>🐕</span>
             <span>🐱</span>
