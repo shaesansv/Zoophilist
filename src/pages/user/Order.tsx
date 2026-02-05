@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useAppContext } from '../../context/AppContext';
-import ProductCard from '../../components/ProductCard';
-import { OrderFormData, CreateOrderRequest } from '../../types';
-import api from '../../api/axios';
-import { useToast } from '../../hooks/use-toast';
+import React, { useState, useEffect } from "react";
+import { useAppContext } from "../../context/AppContext";
+import ProductCard from "../../components/ProductCard";
+import { OrderFormData, CreateOrderRequest } from "../../types";
+import api from "../../api/axios";
+import { useToast } from "../../hooks/use-toast";
 
 const Order: React.FC = () => {
   const { categories, products, refreshProducts } = useAppContext();
   const { toast } = useToast();
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [showCheckout, setShowCheckout] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<{ id: string; quantity: number } | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<{
+    id: string;
+    quantity: number;
+  } | null>(null);
   const [orderForm, setOrderForm] = useState<OrderFormData>({
-    customerName: '',
-    phone: '',
-    altPhone: '',
-    address: '',
+    customerName: "",
+    phone: "",
+    altPhone: "",
+    address: "",
   });
   const [submitting, setSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -25,8 +28,11 @@ const Order: React.FC = () => {
   }, []);
 
   const filteredProducts = selectedCategory
-    ? products.filter(product => product.category._id === selectedCategory && product.available)
-    : products.filter(product => product.available);
+    ? products.filter(
+        (product) =>
+          product.category._id === selectedCategory && product.available
+      )
+    : products.filter((product) => product.available);
 
   const handleBuy = (productId: string, quantity: number) => {
     setSelectedProduct({ id: productId, quantity });
@@ -52,23 +58,23 @@ const Order: React.FC = () => {
         ],
       };
 
-      await api.post('/orders', orderData);
-      
+      await api.post("/orders", orderData);
+
       // Refresh products to update stock
       await refreshProducts();
-      
+
       // Show success animation
       setShowConfirmation(true);
       setShowCheckout(false);
-      
+
       // Reset form
       setOrderForm({
-        customerName: '',
-        phone: '',
-        altPhone: '',
-        address: '',
+        customerName: "",
+        phone: "",
+        altPhone: "",
+        address: "",
       });
-      
+
       setTimeout(() => {
         setShowConfirmation(false);
         setSelectedProduct(null);
@@ -81,7 +87,7 @@ const Order: React.FC = () => {
     } catch (error: any) {
       toast({
         title: "Order Failed",
-        description: error.response?.data?.message || 'Failed to place order',
+        description: error.response?.data?.message || "Failed to place order",
         variant: "destructive",
       });
     } finally {
@@ -94,8 +100,15 @@ const Order: React.FC = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center animate-fade-in-up">
           <div className="text-8xl mb-6 animate-bounce">🎉</div>
-          <h1 className="text-4xl font-bold text-forest-glow mb-4">Order Placed!</h1>
-          <p className="text-xl text-forest-text mb-6">Thank you for choosing Forest Pet Shop!</p>
+          <h1 className="text-4xl font-bold text-forest-glow mb-4">
+            Order Placed!
+          </h1>
+          <p className="text-xl text-forest-text mb-6">
+            Thank you for choosing Zoophilist!
+          </p>
+          <p className="text-xl text-forest-text mb-6">
+            We will contact you soon😊💕
+          </p>
           <div className="flex justify-center space-x-4 text-4xl animate-float">
             <span>🐕</span>
             <span>🐱</span>
@@ -117,11 +130,11 @@ const Order: React.FC = () => {
         {/* Categories Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <button
-            onClick={() => setSelectedCategory('')}
+            onClick={() => setSelectedCategory("")}
             className={`px-6 py-3 rounded-lg font-medium transition-all ${
               !selectedCategory
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-card text-card-foreground hover:bg-accent'
+                ? "bg-primary text-primary-foreground"
+                : "bg-card text-card-foreground hover:bg-accent"
             }`}
           >
             All Products
@@ -132,8 +145,8 @@ const Order: React.FC = () => {
               onClick={() => setSelectedCategory(category._id)}
               className={`px-6 py-3 rounded-lg font-medium transition-all ${
                 selectedCategory === category._id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-card text-card-foreground hover:bg-accent'
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-card text-card-foreground hover:bg-accent"
               }`}
             >
               {category.name}
@@ -155,8 +168,12 @@ const Order: React.FC = () => {
         {filteredProducts.length === 0 && (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-semibold text-foreground mb-2">No Products Found</h3>
-            <p className="text-forest-text">Try selecting a different category</p>
+            <h3 className="text-2xl font-semibold text-foreground mb-2">
+              No Products Found
+            </h3>
+            <p className="text-forest-text">
+              Try selecting a different category
+            </p>
           </div>
         )}
 
@@ -164,8 +181,10 @@ const Order: React.FC = () => {
         {showCheckout && (
           <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <div className="forest-card max-w-md w-full max-h-[90vh] overflow-y-auto">
-              <h2 className="text-2xl font-bold text-foreground mb-6">Complete Your Order</h2>
-              
+              <h2 className="text-2xl font-bold text-foreground mb-6">
+                Complete Your Order
+              </h2>
+
               <form onSubmit={handleOrderSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
@@ -175,7 +194,12 @@ const Order: React.FC = () => {
                     type="text"
                     required
                     value={orderForm.customerName}
-                    onChange={(e) => setOrderForm(prev => ({ ...prev, customerName: e.target.value }))}
+                    onChange={(e) =>
+                      setOrderForm((prev) => ({
+                        ...prev,
+                        customerName: e.target.value,
+                      }))
+                    }
                     className="forest-input w-full"
                     placeholder="Enter your full name"
                   />
@@ -189,7 +213,12 @@ const Order: React.FC = () => {
                     type="tel"
                     required
                     value={orderForm.phone}
-                    onChange={(e) => setOrderForm(prev => ({ ...prev, phone: e.target.value }))}
+                    onChange={(e) =>
+                      setOrderForm((prev) => ({
+                        ...prev,
+                        phone: e.target.value,
+                      }))
+                    }
                     className="forest-input w-full"
                     placeholder="Enter your phone number"
                   />
@@ -202,7 +231,12 @@ const Order: React.FC = () => {
                   <input
                     type="tel"
                     value={orderForm.altPhone}
-                    onChange={(e) => setOrderForm(prev => ({ ...prev, altPhone: e.target.value }))}
+                    onChange={(e) =>
+                      setOrderForm((prev) => ({
+                        ...prev,
+                        altPhone: e.target.value,
+                      }))
+                    }
                     className="forest-input w-full"
                     placeholder="Enter alternate phone (optional)"
                   />
@@ -216,7 +250,12 @@ const Order: React.FC = () => {
                     required
                     rows={3}
                     value={orderForm.address}
-                    onChange={(e) => setOrderForm(prev => ({ ...prev, address: e.target.value }))}
+                    onChange={(e) =>
+                      setOrderForm((prev) => ({
+                        ...prev,
+                        address: e.target.value,
+                      }))
+                    }
                     className="forest-input w-full resize-none"
                     placeholder="Enter your complete delivery address"
                   />
@@ -235,7 +274,7 @@ const Order: React.FC = () => {
                     disabled={submitting}
                     className="forest-button flex-1"
                   >
-                    {submitting ? 'Placing Order...' : 'Place Order'}
+                    {submitting ? "Placing Order..." : "Place Order"}
                   </button>
                 </div>
               </form>

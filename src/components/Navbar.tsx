@@ -1,118 +1,117 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Home, Building2, BookOpen, Phone } from "lucide-react";
+import { Button } from "./ui/button";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isAdmin = location.pathname.startsWith("/admin");
 
-  if (isAdmin) {
-    return (
-      <nav className="border-b border-border bg-card/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-8">
-              <Link
-                to="/admin/home"
-                className="text-xl font-bold text-forest-glow"
-              >
-                🌲 Zoophilist Admin
-              </Link>
-              <div className="flex space-x-6">
-                <Link
-                  to="/admin/home"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === "/admin/home"
-                      ? "bg-primary text-primary-foreground"
-                      : "text-forest-text hover:text-foreground hover:bg-accent"
-                  }`}
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/admin/products"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === "/admin/products"
-                      ? "bg-primary text-primary-foreground"
-                      : "text-forest-text hover:text-foreground hover:bg-accent"
-                  }`}
-                >
-                  Products
-                </Link>
-                <Link
-                  to="/admin/customers"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === "/admin/customers"
-                      ? "bg-primary text-primary-foreground"
-                      : "text-forest-text hover:text-foreground hover:bg-accent"
-                  }`}
-                >
-                  Orders
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                to="/"
-                className="text-forest-text hover:text-foreground text-sm"
-              >
-                View Site
-              </Link>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("admin_token");
-                  window.location.href = "/admin/login";
-                }}
-                className="forest-button text-sm px-3 py-2"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { path: "/", label: "Home", icon: Home },
+    { path: "/properties", label: "Properties", icon: Building2 },
+    { path: "/our-story", label: "Our Story", icon: BookOpen },
+    { path: "/contact", label: "Contact", icon: Phone },
+  ];
 
   return (
-    <nav className="border-b border-border bg-card/80 backdrop-blur-sm">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
+        isScrolled
+          ? "bg-background/98 backdrop-blur-md shadow-strong border-b border-border"
+          : "bg-gradient-to-b from-background/60 to-transparent backdrop-blur-sm"
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold text-forest-glow">
-            🐾 Zoophilist
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2 group">
+            <Building2 className="h-8 w-8 text-primary transition-smooth group-hover:scale-110 group-hover:text-accent" />
+            <span className="text-xl md:text-2xl font-bold text-foreground transition-smooth group-hover:text-primary">
+              Elite Estates
+            </span>
           </Link>
-          <div className="flex items-center space-x-6">
-            <Link
-              to="/"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                location.pathname === "/"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-forest-text hover:text-foreground hover:bg-accent"
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              to="/order"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                location.pathname === "/order"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-forest-text hover:text-foreground hover:bg-accent"
-              }`}
-            >
-              Shop
-            </Link>
-            <Link
-              to="/contact"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                location.pathname === "/contact"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-forest-text hover:text-foreground hover:bg-accent"
-              }`}
-            >
-              Contact
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`relative text-sm font-medium transition-smooth hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:after:scale-x-100 ${
+                  location.pathname === link.path
+                    ? "text-primary after:scale-x-100"
+                    : "text-foreground/80"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link to="/admin">
+              <Button
+                size="sm"
+                className="gradient-hero hover-glow transition-smooth hover:scale-105"
+              >
+                Admin Login
+              </Button>
             </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 animate-slide-up">
+            <div className="flex flex-col space-y-4">
+              {navLinks.map((link, index) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center space-x-3 px-4 py-2 rounded-lg transition-smooth hover-lift ${
+                      location.pathname === link.path
+                        ? "bg-primary/10 text-primary shadow-soft"
+                        : "text-foreground/80 hover:bg-muted"
+                    }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <Icon className="h-5 w-5 transition-smooth group-hover:scale-110" />
+                    <span className="font-medium">{link.label}</span>
+                  </Link>
+                );
+              })}
+              <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button className="w-full gradient-hero hover-glow transition-smooth hover:scale-105">
+                  Admin Login
+                </Button>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
