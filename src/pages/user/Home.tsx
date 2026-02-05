@@ -114,6 +114,7 @@ const Home = () => {
               className="group relative overflow-hidden rounded-2xl shadow-medium hover-lift animate-scale-in"
               style={{ animationDelay: "0.2s" }}
             >
+<<<<<<< HEAD
               <img
                 src={landPlot2}
                 alt="Scenic Land Plot"
@@ -136,6 +137,26 @@ const Home = () => {
                     View Details
                   </Button>
                 </Link>
+=======
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-2xl font-bold text-white mb-6">
+                  Why Choose Zoophilist?
+                </h3>
+                <ul className="space-y-4 text-gray-200">
+                  <li className="flex items-center gap-3">
+                    <span className="text-forest-glow text-xl">🐾</span>
+                    <span>Veterinarian approved and tested products</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-forest-glow text-xl">🌍</span>
+                    <span>Eco-friendly packaging and practices</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="text-forest-glow text-xl">💚</span>
+                    <span>Supporting wildlife conservation efforts</span>
+                  </li>
+                </ul>
+>>>>>>> b2b66f71e076972cdd30e6213741ab510b5b7b6a
               </div>
             </div>
           </div>
@@ -152,9 +173,17 @@ const Home = () => {
           backgroundAttachment: "fixed",
         }}
       >
+<<<<<<< HEAD
         <div className="absolute inset-0 bg-background/90"></div>
         <div className="container mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+=======
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white animate-fade-in-up">
+            Premium <span className="text-forest-glow">Zoophilist</span> Benefits
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+>>>>>>> b2b66f71e076972cdd30e6213741ab510b5b7b6a
             {[
               {
                 icon: MapPin,
