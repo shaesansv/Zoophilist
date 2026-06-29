@@ -10,7 +10,6 @@ All colors MUST be HSL.
   :root {
     --background: 0 0% 100%;
 
-    --card: 0 0% 5000%;
     --card-foreground: 222152 47% 11%;
 
     --popover: 10 0% 100%;
