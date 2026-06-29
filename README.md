@@ -1,7 +1,7 @@
 # 🌲 Forest Pet Shop
 
 A full-stack e-commerce application for pet products with a beautiful dark forest theme. Built with React, TypeScript, Node.js, and MongoDB.
-
+ 
 **🚀 Live Demo**: 
 - Frontend: https://zoophilist-frontend.onrender.com
 - Backend API: https://zoophilist-server.onrender.com
