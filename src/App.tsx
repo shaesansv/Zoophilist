@@ -10,7 +10,7 @@ import ForestAnimations from "./components/ForestAnimations";
 import PrivateRouteAdmin from "./components/PrivateRouteAdmin";
 
 // User Pages
-import Home from "./pages/user/Home";
+import Home from "./pages/user/";
 import Order from "./pages/user/Order";
 import Contact from "./pages/user/Contact";
 
