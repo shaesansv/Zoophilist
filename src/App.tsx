@@ -16,12 +16,12 @@ import Contact from "./pages/user/Contact";
 
 // Admin Pages
 //Summa  ttrtt
-import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLogin rom "./pages/admin/AdminLogin";
 import AdminHome from "./pages/admin/AdminHome";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminCustomers from "./pages/admin/AdminCustomers";
 
-import NotFound from "./pages/NotFound";
+import NotFound from "page found"
 
 const queryClient = new QueryClient();
 
