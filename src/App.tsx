@@ -16,7 +16,6 @@ import Contact from "./pages/user/Contact";
 
 // Admin Pages
 //Summa  ttrtt
-import react from "react";
 import AdminLogin rom "./pages/admin/AdminLogin";
 import AdminHome from "./pages/admin/AdminHome";
 import AdminProducts from "./pages/admin/AdminProducts";
